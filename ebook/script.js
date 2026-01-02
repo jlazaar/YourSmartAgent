@@ -37,7 +37,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
     reveal();
 
-    // Horizontal scroll for characters on mouse wheel (optional enhancement)
+    // Hero Carousel Logic
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.carousel-prev');
+    const nextBtn = document.querySelector('.carousel-next');
+    let currentSlide = 0;
+    let slideInterval;
+
+    const showSlide = (index) => {
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    };
+
+    const nextSlide = () => {
+        showSlide(currentSlide + 1);
+    };
+
+    const prevSlide = () => {
+        showSlide(currentSlide - 1);
+    };
+
+    if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetInterval();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetInterval();
+        });
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            resetInterval();
+        });
+    });
+
+    const startInterval = () => {
+        slideInterval = setInterval(nextSlide, 5000);
+    };
+
+    const resetInterval = () => {
+        clearInterval(slideInterval);
+        startInterval();
+    };
+
+    if (slides.length > 0) {
+        startInterval();
+    }
+
+    // Horizontal scroll for characters on mouse wheel
     const slider = document.querySelector('.characters-slider');
     if (slider) {
         slider.addEventListener('wheel', (evt) => {
