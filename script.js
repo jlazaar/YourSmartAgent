@@ -58,7 +58,9 @@ const translations = {
             method: "Méthodologie",
             blog: "Blog",
             contact_title: "Contact",
-            copy: "&copy; 2026 Your Smart Agent. Tous droits réservés."
+            copy: "&copy; 2026 Your Smart Agent. Tous droits réservés.",
+            privacy: "Confidentialité",
+            terms: "Conditions d'utilisation"
         }
     },
     en: {
@@ -120,7 +122,9 @@ const translations = {
             method: "Methodology",
             blog: "Blog",
             contact_title: "Contact",
-            copy: "&copy; 2026 Your Smart Agent. All rights reserved."
+            copy: "&copy; 2026 Your Smart Agent. All rights reserved.",
+            privacy: "Privacy Policy",
+            terms: "Terms of Service"
         }
     }
 }
